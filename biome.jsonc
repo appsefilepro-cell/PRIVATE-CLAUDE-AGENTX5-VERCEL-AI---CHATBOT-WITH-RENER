@@ -1,0 +1,49 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["ultracite/core", "ultracite/react", "ultracite/next"],
+  "files": {
+    "includes": [
+      "**/*",
+      "!components/ui",
+      "!components/ai-elements",
+      "!lib/utils.ts",
+      "!hooks/use-mobile.ts"
+    ]
+  },
+  "linter": {
+    "rules": {
+      "suspicious": {
+        /* Needs more work to fix */
+        "noExplicitAny": "off",
+
+        /* Allow for Tailwind @ rules */
+        "noUnknownAtRules": "off",
+
+        /* Allowing console for debugging */
+        "noConsole": "off"
+      },
+      "style": {
+        /* Allowing magic numbers */
+        "noMagicNumbers": "off",
+
+        /* Needs more work to fix */
+        "noNestedTernary": "off"
+      },
+      "nursery": {
+        /* Too many false positives */
+        "noUnnecessaryConditions": "off"
+      },
+      "complexity": {
+        /* Needs more work to fix */
+        "noExcessiveCognitiveComplexity": "off",
+
+        /* This one has false positives. It's a bit... iffy 😉 */
+        "useSimplifiedLogicExpression": "off"
+      },
+      "a11y": {
+        /* Needs more work to fix */
+        "noSvgWithoutTitle": "off"
+      }
+    }
+  }
+}
