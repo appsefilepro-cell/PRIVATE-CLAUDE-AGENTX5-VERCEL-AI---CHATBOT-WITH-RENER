@@ -52,7 +52,7 @@ const features = [
     icon: Lock,
     title: "Built-in Authentication",
     description:
-      "Use email/password authentication to allow your users and guest access with secure session management and data protection.",
+      "Use email/password authentication to allow your users and guests access with secure session management and data protection.",
   },
 ];
 
