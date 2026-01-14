@@ -52,7 +52,7 @@ const features = [
     icon: Lock,
     title: "Built-in Authentication",
     description:
-      "Use email/password authentication to allow your users AND GUEST access with secure session management and data protection.",
+      "Use email/password authentication to allow your users and guest access with secure session management and data protection.",
   },
 ];
 
@@ -79,7 +79,7 @@ export const Features = () => {
             className="rounded-lg border border-zinc-200 bg-white p-6 shadow-sm transition-shadow hover:shadow-md dark:border-zinc-800 dark:bg-zinc-950"
             exit={{ opacity: 0, y: 20 }}
             initial={{ opacity: 0, y: 20 }}
-            transition={{ delay: 0.1 * index }}
+            transition={{ delay: Math.min(0.1 * index, 0.6) }}
           >
             <div className="mb-4 flex items-center gap-3">
               <div className="rounded-lg bg-zinc-100 p-2 dark:bg-zinc-800">
