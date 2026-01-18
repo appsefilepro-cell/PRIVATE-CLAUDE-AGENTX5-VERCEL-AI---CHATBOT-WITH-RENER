@@ -20,6 +20,7 @@ import { createDocument } from "@/lib/ai/tools/create-document";
 import { getWeather } from "@/lib/ai/tools/get-weather";
 import { requestSuggestions } from "@/lib/ai/tools/request-suggestions";
 import { updateDocument } from "@/lib/ai/tools/update-document";
+import { getAgentStatus, executeAgentTask } from "@/lib/ai/tools/agent-control";
 import { isProductionEnvironment } from "@/lib/constants";
 import {
   createStreamId,
@@ -183,6 +184,8 @@ export async function POST(request: Request) {
                 "createDocument",
                 "updateDocument",
                 "requestSuggestions",
+                "getAgentStatus",
+                "executeAgentTask",
               ],
           experimental_transform: isReasoningModel
             ? undefined
@@ -198,6 +201,8 @@ export async function POST(request: Request) {
             getWeather,
             createDocument: createDocument({ session, dataStream }),
             updateDocument: updateDocument({ session, dataStream }),
+            getAgentStatus,
+            executeAgentTask,
             requestSuggestions: requestSuggestions({
               session,
               dataStream,
