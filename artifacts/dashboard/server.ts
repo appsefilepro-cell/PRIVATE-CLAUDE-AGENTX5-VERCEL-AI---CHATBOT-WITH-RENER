@@ -14,17 +14,17 @@ export const dashboardDocumentHandler = createDocumentHandler<"dashboard">({
       },
       last_sync: new Date().toISOString()
     };
-    
+
     const content = JSON.stringify(dashboardData, null, 2);
     dataStream.write({
       type: "data-dashboardDelta",
       data: content,
       transient: true,
     });
-    
+
     return content;
   },
   onUpdateDocument: async ({ document, description, dataStream }) => {
-    return document.content;
+    return document.content ?? "";
   },
 });
