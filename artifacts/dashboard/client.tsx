@@ -1,7 +1,7 @@
 import { Artifact } from "@/components/create-artifact";
 import { ActivityIcon, RefreshCcwIcon } from "@/components/icons";
 
-type Metadata = any;
+type Metadata = Record<string, never>;
 
 export const dashboardArtifact = new Artifact<"dashboard", Metadata>({
   kind: "dashboard",
@@ -28,7 +28,7 @@ export const dashboardArtifact = new Artifact<"dashboard", Metadata>({
               {data.status}
             </span>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div className="p-4 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 shadow-sm">
               <div className="text-sm text-zinc-500 dark:text-zinc-400">Active Agents</div>
@@ -39,7 +39,7 @@ export const dashboardArtifact = new Artifact<"dashboard", Metadata>({
               <div className="text-3xl font-bold text-green-600 dark:text-green-400">{data.trading.missed_revenue}</div>
             </div>
           </div>
-          
+
           <div className="p-4 bg-white dark:bg-zinc-800 rounded-xl border border-zinc-200 dark:border-zinc-700 shadow-sm">
             <div className="text-sm font-semibold mb-3 text-zinc-900 dark:text-zinc-100">Active Trading Pairs</div>
             <div className="flex flex-wrap gap-2">
@@ -50,7 +50,7 @@ export const dashboardArtifact = new Artifact<"dashboard", Metadata>({
               ))}
             </div>
           </div>
-          
+
           <div className="text-xs text-zinc-400 dark:text-zinc-500 text-center">
             Last Sync: {new Date(data.last_sync).toLocaleString()}
           </div>
@@ -64,11 +64,8 @@ export const dashboardArtifact = new Artifact<"dashboard", Metadata>({
     {
       icon: <RefreshCcwIcon size={18} />,
       description: "Refresh Dashboard",
-      onClick: ({ sendMessage }) => {
-        sendMessage({
-          role: "user",
-          parts: [{ type: "text", text: "Refresh the Agent X5.0 dashboard status." }],
-        });
+      onClick: ({ handleVersionChange }) => {
+        handleVersionChange("latest");
       },
     },
   ],
